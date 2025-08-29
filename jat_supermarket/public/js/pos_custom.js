@@ -31,10 +31,11 @@ const addCustomerPhoneField = setInterval(() => {
         // Save the value to POS Invoice doc on change
         $("#custom_customer_phone").on("change", function () {
             const phoneNumber = $(this).val();
+            console.log("Saving phone number:", phoneNumber);
             window.cur_pos.frm.set_value("custom_customer_phone", phoneNumber);
         });
     }
-}, 1000);
+}, 1500);
 
 
 
