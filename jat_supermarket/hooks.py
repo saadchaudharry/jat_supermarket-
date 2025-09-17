@@ -138,13 +138,11 @@ app_include_js = ["/assets/jat_supermarket/js/jat_supermarket.js",
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Item": {
+		"autoname": "jat_supermarket.custom_script.item.item_custom.autoname",
+	}
+}
 
 # Scheduled Tasks
 # ---------------
