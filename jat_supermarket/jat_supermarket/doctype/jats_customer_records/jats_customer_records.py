@@ -16,3 +16,13 @@ class JATSCustomerRecords(Document):
 		self.credit = credit
 		self.debit = debit
 		self.balance = credit - debit
+
+		earn = 0
+		redeem = 0
+		for i in self.loyalty_item:
+			earn += i.earn or 0
+			redeem += i.redeem or 0
+
+		self.earn = earn
+		self.redeem = redeem
+		self.loyalty_point = earn - redeem

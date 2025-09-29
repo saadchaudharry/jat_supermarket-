@@ -141,6 +141,9 @@ app_include_js = ["/assets/jat_supermarket/js/jat_supermarket.js",
 doc_events = {
 	"Item": {
 		"autoname": "jat_supermarket.custom_script.item.item_custom.autoname",
+	},
+    "Loyalty Point Entry":{
+        "after_insert":"jat_supermarket.custom_script.loyalty_point_entry.loyalty_point_entry.after_insert"
 	}
 }
 

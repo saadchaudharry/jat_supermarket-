@@ -16,7 +16,17 @@
   "debit",
   "column_break_euhk",
   "credit",
-  "balance"
+  "balance",
+  "loyalty_tab",
+  "loyalty_item",
+  "section_break_hbbn",
+  "column_break_rpjh",
+  "column_break_hpbf",
+  "column_break_kkse",
+  "earn",
+  "column_break_pghu",
+  "redeem",
+  "loyalty_point"
  ],
  "fields": [
   {
@@ -74,13 +84,59 @@
   {
    "fieldname": "column_break_fymk",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "loyalty_tab",
+   "fieldtype": "Tab Break",
+   "label": "Loyalty"
+  },
+  {
+   "fieldname": "loyalty_item",
+   "fieldtype": "Table",
+   "label": "Loyalty",
+   "options": "JATS Customer Records loyalty"
+  },
+  {
+   "fieldname": "section_break_hbbn",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_rpjh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_hpbf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_kkse",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "earn",
+   "fieldtype": "Float",
+   "label": "Earn"
+  },
+  {
+   "fieldname": "column_break_pghu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "redeem",
+   "fieldtype": "Float",
+   "label": "Redeem"
+  },
+  {
+   "fieldname": "loyalty_point",
+   "fieldtype": "Float",
+   "label": "Loyalty Point"
   }
  ],
  "grid_page_length": 50,
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-08-29 02:48:47.903274",
+ "modified": "2025-09-29 23:35:53.842353",
  "modified_by": "Administrator",
  "module": "Jat Supermarket",
  "name": "JATS Customer Records",

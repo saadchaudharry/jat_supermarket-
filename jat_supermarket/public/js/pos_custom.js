@@ -1,41 +1,41 @@
 console.log("Custom POS script loaded");
 
-const addCustomerPhoneField = setInterval(() => {
-    // Wait until POS is fully loaded
-    if (window.cur_pos && window.cur_pos.wrapper) {
-        clearInterval(addCustomerPhoneField);
+// const addCustomerPhoneField = setInterval(() => {
+//     // Wait until POS is fully loaded
+//     if (window.cur_pos && window.cur_pos.wrapper) {
+//         clearInterval(addCustomerPhoneField);
 
-        // Locate the cart totals section (above discount)
-        const cartTotalsSection = $(window.cur_pos.wrapper).find('.cart-totals-section');
-        if (!cartTotalsSection.length) {
-            console.warn("Cart totals section not found!");
-            return;
-        }
+//         // Locate the cart totals section (above discount)
+//         const cartTotalsSection = $(window.cur_pos.wrapper).find('.cart-totals-section');
+//         if (!cartTotalsSection.length) {
+//             console.warn("Cart totals section not found!");
+//             return;
+//         }
 
-        // Create custom phone input field
-        const customerPhoneField = $(`
-            <div class="form-group" style="margin:5px;">
-                <label>Customer Phone</label>
-                <input type="text" class="form-control" id="custom_customer_phone" placeholder="Enter phone number">
-            </div>
-        `);
+//         // Create custom phone input field
+//         const customerPhoneField = $(`
+//             <div class="form-group" style="margin:5px;">
+//                 <label>Customer Phone</label>
+//                 <input type="text" class="form-control" id="custom_customer_phone" placeholder="Enter phone number">
+//             </div>
+//         `);
 
-        // Insert the field above the totals/discount section
-        customerPhoneField.insertBefore(cartTotalsSection);
+//         // Insert the field above the totals/discount section
+//         customerPhoneField.insertBefore(cartTotalsSection);
 
-        // Restore previously saved value if available
-        if (window.cur_pos.frm.doc.custom_customer_phone) {
-            $("#custom_customer_phone").val(window.cur_pos.frm.doc.custom_customer_phone);
-        }
+//         // Restore previously saved value if available
+//         if (window.cur_pos.frm.doc.custom_customer_phone) {
+//             $("#custom_customer_phone").val(window.cur_pos.frm.doc.custom_customer_phone);
+//         }
 
-        // Save the value to POS Invoice doc on change
-        $("#custom_customer_phone").on("change", function () {
-            const phoneNumber = $(this).val();
-            console.log("Saving phone number:", phoneNumber);
-            window.cur_pos.frm.set_value("custom_customer_phone", phoneNumber);
-        });
-    }
-}, 1500);
+//         // Save the value to POS Invoice doc on change
+//         $("#custom_customer_phone").on("change", function () {
+//             const phoneNumber = $(this).val();
+//             console.log("Saving phone number:", phoneNumber);
+//             window.cur_pos.frm.set_value("custom_customer_phone", phoneNumber);
+//         });
+//     }
+// }, 1500);
 
 
 
