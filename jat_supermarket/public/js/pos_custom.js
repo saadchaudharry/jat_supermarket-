@@ -1,4 +1,151 @@
-console.log("Custom POS script loaded");
+// document ready jquery
+console.log("Custom POS script loaded 333");
+
+
+// Event delegation to handle loyalty card clicks
+$(document).on('click', '.mode-of-payment.loyalty-card.border-primary', function() {
+    console.log('Loyalty card clicked:', this);
+
+    var $posNoti = $("#page-point-of-sale .loyalty-amount.mode-of-payment-control p:nth-child(3)");
+    const inputSelector = "#page-point-of-sale > div.container.page-body > div.page-wrapper > div > div.row.layout-main > div > div.layout-main-section > div.point-of-sale-app > section.payment-container > div.payment-modes > div:nth-child(4) > div > div.loyalty-amount.mode-of-payment-control > div > div > div.control-input-wrapper > div.control-input > input";
+
+    if ( !cur_pos.frm.doc.custom_customer_phone  ){
+        const inputEl = document.querySelector(inputSelector);
+        if (inputEl) {
+            inputEl.value = "0.0";         // Set value to 0.0
+            inputEl.readOnly = true;
+            cur_pos.frm.set_value("loyalty_points", 0);
+
+            console.log("Loyalty input is now read-only");
+        }
+
+        if ($posNoti.length) {
+            $posNoti.html("Please enter the customer's phone number to redeem loyalty points");
+        }
+    }
+
+    
+});
+
+// Optional: observe DOM to log when payment container becomes visible
+const observer2 = new MutationObserver((mutationsList, observer) => {
+    const $paymentContainer = $('.payment-container');
+    if ($paymentContainer.is(':visible')) {
+        console.log('.payment-container is visible, loyalty card click handler active');
+        observer.disconnect(); // Optional: stop observing if you only need it once
+    }
+});
+
+observer2.observe(document.body, { childList: true, subtree: true });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // const addCustomerPhoneField = setInterval(() => {
 //     // Wait until POS is fully loaded

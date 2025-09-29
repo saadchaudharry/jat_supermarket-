@@ -19,14 +19,33 @@ function handleDOMChange(mutationsList, observer) {
             }
 
 
+            if ($('.loyalty-amount mode-of-payment-control').is(':visible')) {
+                    console.log("Loyalty card clicked:")
 
-          
+            }
+
+
+
         }
     }
 
 
   
   
+
+// Function to attach loyalty card click handler
+function attachLoyaltyClick() {
+    var $loyaltyCards = $('.mode-of-payment.loyalty-card.border-primary');
+    var $posNoti = $("#page-point-of-sale .loyalty-amount.mode-of-payment-control p:nth-child(3)");
+
+    // Attach click handler with namespace to prevent duplicates
+    $loyaltyCards.off('click.customPOS').on('click.customPOS', function() {
+        console.log('Loyalty card clicked:', this);
+        $posNoti.html('');
+    });
+}
+
+
   
   // functionality to run when a change is detected
   function addCustomerPhoneField() {
@@ -66,24 +85,48 @@ function handleDOMChange(mutationsList, observer) {
             const phoneNumber = $(this).val();
             console.log("Saving phone number:", phoneNumber);
             window.cur_pos.frm.set_value("custom_customer_phone", phoneNumber);
+            updateLoyaltyPoints();
         });
     }
+
+
+
 }
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+function updateLoyaltyPoints() {
+    // Call Frappe backend method
+    frappe.call({
+        method: "get_loyalty_point",
+        args: {
+            customer_phone: cur_pos.frm.doc.custom_customer_phone,
+        },
+        callback: function (r) {
+            if (r && r.message !== undefined) {
+                const loyaltyPoints = r.message;
+
+                // Update POS notification
+                var posNoti = document.querySelector("#page-point-of-sale .loyalty-amount.mode-of-payment-control p:nth-child(3)");
+                if (posNoti) {
+                    posNoti.innerHTML = `User has ${loyaltyPoints} loyalty points`;
+                }
+
+                // Make input editable
+                const inputSelector = "#page-point-of-sale > div.container.page-body > div.page-wrapper > div > div.row.layout-main > div > div.layout-main-section > div.point-of-sale-app > section.payment-container > div.payment-modes > div:nth-child(4) > div > div.loyalty-amount.mode-of-payment-control > div > div > div.control-input-wrapper > div.control-input > input";
+                const inputEl = document.querySelector(inputSelector);
+                if (inputEl) {
+                    inputEl.readOnly = false;
+                    // inputEl.value = loyaltyPoints; // optionally set the value
+                }
+            }
+        }
+    });
+}
+
+
+
+
+
+
   }
   
 
